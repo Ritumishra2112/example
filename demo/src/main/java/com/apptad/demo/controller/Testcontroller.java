@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apptad.demo.model.Candidate;
 import com.apptad.demo.model.Employee;
 import com.apptad.demo.service.DeleteService;
+import com.apptad.demo.service.InsertCandidateService;
 import com.apptad.demo.service.InsertService;
 import com.apptad.demo.service.SearchService;
 import com.apptad.demo.service.UpdateService;
@@ -101,6 +103,20 @@ public Collection<Employee> searchByName(@RequestParam String fname) {
 }
 
 
+@Autowired
+InsertCandidateService insertCandidateService;
+
+@PostMapping(value="/createcandidate")
+public String createCandidate(@RequestBody Candidate candidateModel) {
+
+	return insertCandidateService.Insert(candidateModel);
+}
+
+
+
+
+
+
 
 
 //@Autowired
@@ -141,7 +157,7 @@ public String Test4(@RequestBody String details) {
 @PostMapping(value="/test5")
 	public String Test5(@RequestBody Employee emp) {
 		System.out.println(emp);
-		return "hello Panda";
+		return "hello P";
 }
 
 @GetMapping(value="id/{name}")
